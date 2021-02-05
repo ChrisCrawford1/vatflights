@@ -5,7 +5,7 @@ namespace Tests\Feature\Commands;
 use App\Jobs\FlightCloser;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+use Tests\FeatureTestCase;
 use App\Models\Flight;
 use App\Console\Commands\CloseFlight;
 use Illuminate\Support\Facades\Queue;
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Collection;
 /**
  * @property Collection $activeFlights
  */
-class CloseFlightCommandTest extends TestCase
+class CloseFlightCommandTest extends FeatureTestCase
 {
     use RefreshDatabase;
 

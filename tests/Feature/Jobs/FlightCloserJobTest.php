@@ -3,7 +3,7 @@
 namespace Tests\Feature\Jobs;
 
 use App\Jobs\FlightCloser;
-use Tests\TestCase;
+use Tests\FeatureTestCase;
 use Carbon\Carbon;
 use App\Models\Flight;
 use Illuminate\Database\Eloquent\Collection;
@@ -12,7 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 /**
  * @property Collection flightsToBeClosed
  */
-class FlightCloserJobTest extends TestCase
+class FlightCloserJobTest extends FeatureTestCase
 {
     use RefreshDatabase;
 
