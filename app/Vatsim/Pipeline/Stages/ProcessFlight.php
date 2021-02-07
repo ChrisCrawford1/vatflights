@@ -5,7 +5,6 @@ namespace App\Vatsim\Pipeline\Stages;
 use App\Models\Flight;
 use Carbon\Carbon;
 use Closure;
-use Ramsey\Uuid\Uuid;
 
 class ProcessFlight
 {
@@ -21,7 +20,6 @@ class ProcessFlight
             $storedFlight = Flight::create(
                 [
                     'callsign_id' => $data['callsign']->id,
-                    'uuid' => Uuid::uuid4()->toString(),
                     'flight_rules' => $rawFlightData['flight_plan']['flight_rules'],
                     'aircraft_type' => $rawFlightData['flight_plan']['aircraft'],
                     'departure' => $rawFlightData['flight_plan']['departure'],

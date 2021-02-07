@@ -2,6 +2,7 @@
 
 namespace App\Vatsim\Pipeline;
 
+use App\Vatsim\Pipeline\Stages\NormaliseRawData;
 use App\Vatsim\Pipeline\Stages\ProcessCallsign;
 use App\Vatsim\Pipeline\Stages\ProcessFlight;
 use Illuminate\Pipeline\Pipeline;
@@ -9,6 +10,7 @@ use Illuminate\Pipeline\Pipeline;
 class FlightProcessor
 {
     private const PIPES = [
+        NormaliseRawData::class,
         ProcessCallsign::class,
         ProcessFlight::class,
     ];
