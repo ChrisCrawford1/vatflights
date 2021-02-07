@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use App\Models\DailyStats;
-use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;

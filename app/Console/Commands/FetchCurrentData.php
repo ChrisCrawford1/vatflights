@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Jobs\ProcessGeneralData;
+use App\Vatsim\Pipeline\Contracts\IFlightProcessor;
+use App\Vatsim\Pipeline\FlightProcessor;
 use Carbon\Carbon;
 use App\Models\DailyStats;
 use App\Jobs\CallsignUpdate;
