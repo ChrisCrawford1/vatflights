@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\FetchCurrentData;
 use App\Console\Commands\InitialiseDailyStats;
+use App\Console\Commands\ProcessPopularStats;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -30,6 +31,8 @@ class Kernel extends ConsoleKernel
             ->dailyAt('00:00');
         $schedule->command(FetchCurrentData::class)
             ->everyFiveMinutes();
+        $schedule->command(ProcessPopularStats::class)
+            ->everyThirtyMinutes();
     }
 
     /**

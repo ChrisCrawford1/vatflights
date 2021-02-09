@@ -13,7 +13,7 @@ class CloseFlight extends Command
      *
      * @var string
      */
-    protected $signature = 'flights:close';
+    protected $signature = 'vatflights:flights:close';
 
     /**
      * The console command description.

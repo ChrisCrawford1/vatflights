@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Contracts;
 
 use App\Exceptions\Vatsim\DataUnavailableException;
 use App\Vatsim\Structure;

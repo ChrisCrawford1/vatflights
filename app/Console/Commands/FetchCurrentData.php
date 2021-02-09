@@ -3,12 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Jobs\ProcessGeneralData;
-use App\Vatsim\Pipeline\Contracts\IFlightProcessor;
-use App\Vatsim\Pipeline\FlightProcessor;
+use App\Services\Contracts\IDataService;
 use Carbon\Carbon;
-use App\Models\DailyStats;
 use App\Jobs\CallsignUpdate;
-use App\Services\IDataService;
 use Illuminate\Console\Command;
 use App\Exceptions\Vatsim\DataUnavailableException;
 use Illuminate\Support\Facades\Log;
@@ -20,7 +17,7 @@ class FetchCurrentData extends Command
      *
      * @var string
      */
-    protected $signature = 'fetch:current';
+    protected $signature = 'vatflights:fetch:current';
 
     /**
      * The console command description.

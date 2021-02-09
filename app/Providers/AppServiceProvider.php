@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
-use App\Services\IDataService;
+use App\Services\Contracts\IStatsService;
+use App\Services\FlightStatisticsDataService;
 use App\Services\VatsimDataService;
 use Illuminate\Support\ServiceProvider;
+use App\Services\Contracts\IDataService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind(IDataService::class, VatsimDataService::class);
+        $this->app->bind(IStatsService::class, FlightStatisticsDataService::class);
     }
 }

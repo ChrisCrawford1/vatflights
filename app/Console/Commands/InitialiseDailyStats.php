@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\DailyStats;
-use App\Services\IDataService;
+use App\Services\Contracts\IDataService;
 use Illuminate\Console\Command;
 use App\Jobs\ProcessGeneralData;
 use Illuminate\Support\Facades\Log;
@@ -16,7 +16,7 @@ class InitialiseDailyStats extends Command
      *
      * @var string
      */
-    protected $signature = 'fetch:daily';
+    protected $signature = 'vatflights:fetch:daily';
 
     /**
      * The console command description.

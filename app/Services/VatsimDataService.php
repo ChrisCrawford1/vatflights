@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\Vatsim\DataUnavailableException;
+use App\Services\Contracts\IDataService;
 use App\Vatsim\Structure;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;

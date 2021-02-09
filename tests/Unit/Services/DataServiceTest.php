@@ -3,7 +3,7 @@
 namespace Tests\Unit\Services;
 
 use App\Exceptions\Vatsim\DataUnavailableException;
-use App\Services\IDataService;
+use App\Services\Contracts\IDataService;
 use App\Services\VatsimDataService;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;

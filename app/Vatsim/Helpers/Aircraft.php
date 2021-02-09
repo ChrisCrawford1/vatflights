@@ -23,13 +23,17 @@ class Aircraft
         if ($possibleMatches) {
             // In the case the Aircraft is listed like - H/B78X/L
             if (strlen($possibleMatches[1]) === 4) {
-                return $possibleMatches[1];
+                return substr($possibleMatches[1], 0, 4);
             }
 
             // In the case the Aircraft is listed like - B77W/H-SDE1E2E3FGHIJ2J3J4J5M1RWXY/LB1D1
             if ($foundICAO = substr($possibleMatches[0], 0, strpos($possibleMatches[0], '/'))) {
                 return $foundICAO;
             }
+        }
+        // In the case it doesnt match but is something like A320-214
+        if (strlen($type) > 4) {
+            return substr($type, 0, 4);
         }
 
         return $type;
