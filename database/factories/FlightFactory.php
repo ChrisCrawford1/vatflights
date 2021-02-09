@@ -31,6 +31,7 @@ class FlightFactory extends Factory
             'alternate' => 'KLGA',
             'route' => 'DCT LOL',
             'planned_altitude' => 'FL360',
+            'complete' => false,
             'transponder' => $this->faker->randomNumber(4),
             'logged_in_at' => $this->faker->dateTime,
             'last_seen_at' => $this->faker->dateTime,

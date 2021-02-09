@@ -36,7 +36,7 @@ class FlightStatisticsDataService implements IStatsService
      *
      * @return object
      */
-    public function getMostPopularFromDataType(string $dataType, int $limit = 1): object
+    public function getMostPopularFromDataType(string $dataType, int $limit = 1): ?object
     {
         $value = $this->query
             ->select(DB::raw("$dataType, count(*) as count"))
@@ -52,7 +52,7 @@ class FlightStatisticsDataService implements IStatsService
 
     /**
      * @param string $noun
-     * @param bool $isComplete
+     * @param int $isComplete
      * @param int $limit
      *
      * @return object

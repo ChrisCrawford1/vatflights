@@ -30,11 +30,20 @@ class AircraftHelperTest extends TestCase
     }
 
     /** @test */
+    public function it_will_catch_cases_not_caught_in_the_regex_as_four_char_icao()
+    {
+        $this->assertEquals(
+            'C172',
+            Aircraft::findICAO('C172S')
+        );
+    }
+
+    /** @test */
     public function it_will_return_the_string_its_provided_if_it_cannot_process_to_an_icao()
     {
         $this->assertEquals(
-            'C172S',
-            Aircraft::findICAO('C172S')
+            'X2',
+            Aircraft::findICAO('X2')
         );
     }
 }

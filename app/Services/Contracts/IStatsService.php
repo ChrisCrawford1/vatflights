@@ -10,7 +10,7 @@ interface IStatsService
      *
      * @return object
      */
-    public function getMostPopularFromDataType(string $dataType, int $limit = 1): object;
+    public function getMostPopularFromDataType(string $dataType, int $limit = 1): ?object;
 
     /**
      * @param string $noun
