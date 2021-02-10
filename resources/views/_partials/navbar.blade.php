@@ -1,14 +1,14 @@
-<nav class="w-full py-6 bg-gray-700 shadow">
+<nav class="w-full py-4 bg-calypso-500 shadow">
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
         <nav>
             <ul class="flex items-center justify-between text-sm text-white uppercase no-underline">
                 <li>
-                    <a class="hover:text-gray-200 hover:underline px-4" title="Go to the homepage">
+                    <a class="text-quill-400 hover:underline px-3" title="Go to the homepage">
                         Home
                     </a>
                 </li>
                 <li>
-                    <a class="hover:text-gray-200 hover:underline px-4" title="Go to the about page">
+                    <a class="text-quill-400 hover:underline px-3" title="Go to the about page">
                         About
                     </a>
                 </li>

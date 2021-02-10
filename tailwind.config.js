@@ -3,10 +3,19 @@ const { colors: defaultColours } = require('tailwindcss/defaultTheme')
 const colours = {
     ...defaultColours,
     ...{
-        "dark-blue": {
-            "500": "#16213E",
-            "900": "#1a1a2e",
+        "havelock": {
+            "500": "#4D7CDC"
         },
+        "calypso": {
+          "500": "#326495",
+        },
+        "stone": {
+            "500": "#121F31"
+        },
+        "quill": {
+            "400": "#E4E4DB",
+            "500": "#D2D2D1",
+        }
     },
 }
 module.exports = {

@@ -79,4 +79,14 @@ class Flight extends Model
     {
         return $query->where('last_seen_at', '<', Carbon::now()->subMinutes(20));
     }
+
+    /**
+     * @param Builder $query
+     *
+     * @return Builder
+     */
+    public function scopeToday(Builder $query): Builder
+    {
+        return $query->whereDate('created_at', Carbon::today());
+    }
 }
