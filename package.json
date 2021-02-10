@@ -12,7 +12,13 @@
     "devDependencies": {
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
+        "laravel-mix-tailwind": "^0.1.2",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "sass": "^1.32.7",
+        "sass-loader": "8.*"
+    },
+    "dependencies": {
+        "tailwindcss": "^2.0.3"
     }
 }
