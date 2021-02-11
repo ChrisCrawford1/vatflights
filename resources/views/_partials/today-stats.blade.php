@@ -33,7 +33,7 @@
         @endslot
 
         @slot('statValue')
-            {{$stats['most_popular_arrival']}} ({{ $stats['arrival_count'] }})
+            {{$stats['most_popular_arrival'] ?? '????'}} ({{ $stats['arrival_count'] ?? '????' }})
         @endslot
     @endcomponent
     @component('components.stat-card')
