@@ -47,7 +47,7 @@ class ProcessPopularStats extends Command
     {
         $mostPopularAircraft = $this->statsService->getMostPopularFromDataType('aircraft_type');
         $mostPopularAltitude = $this->statsService->getMostPopularFromDataType('planned_altitude');
-        $mostPopularDeparture = $this->statsService->getMostPopularAirfield('departure', (int) false);
+        $mostPopularDeparture = $this->statsService->getMostPopularFromDataType('departure');
         $mostPopularArrival = $this->statsService->getMostPopularAirfield('arrival', (int) true);
 
         DailyStats::today()

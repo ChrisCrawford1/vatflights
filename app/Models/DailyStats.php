@@ -11,7 +11,17 @@ class DailyStats extends Model
 {
     use HasFactory;
 
+    /**
+     * @var array
+     */
     protected $guarded = [];
+
+    /**
+     * @var string[]
+     */
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 
     public function scopeToday(Builder $query)
     {

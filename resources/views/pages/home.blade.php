@@ -16,6 +16,7 @@
 
         <div class="mt-8">
             @include('_partials.today-stats')
+            @include('_partials.last-seven')
         </div>
     </div>
 @endsection

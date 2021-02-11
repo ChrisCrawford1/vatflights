@@ -23,8 +23,8 @@ class Home extends Controller
         $lastSevenDays = DailyStats::whereBetween(
             'created_at',
             [
-                Carbon::today()->subDays(7),
-                Carbon::now()
+                Carbon::yesterday()->subDays(6),
+                Carbon::yesterday()->setTime('23', '59', '59')
             ]
         )->get();
 
