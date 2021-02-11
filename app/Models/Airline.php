@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Callsign extends Model
+class Airline extends Model
 {
     use HasFactory;
 
@@ -17,18 +16,10 @@ class Callsign extends Model
     protected $guarded = [];
 
     /**
-     * @return HasOne
-     */
-    public function airline()
-    {
-        return $this->hasOne(Airline::class);
-    }
-
-    /**
      * @return HasMany
      */
-    public function flights(): HasMany
+    public function callsigns(): HasMany
     {
-        return $this->hasMany(Flight::class);
+        return $this->hasMany(Callsign::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Airline;
 use App\Models\DailyStats;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        if (Airline::count() === 0) {
+            $this->call(AirlineSeeder::class);
+        }
+
         if (DailyStats::count() === 0) {
             $this->call(FlightSeeder::class);
         }

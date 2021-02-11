@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Airline;
 use App\Models\Callsign;
 use App\Models\DailyStats;
 use App\Models\Flight;
@@ -108,8 +109,12 @@ class FlightSeeder extends Seeder
             $callsignRand = rand(0, $callLen - 1);
 
 
+            $airlineId = Airline::whereIcao(substr(self::CALLSIGNS[$callsignRand], 0, 3))
+                ->first()->id;
+
             $callsign = Callsign::create(
                 [
+                    'airline_id' => $airlineId,
                     'callsign' => self::CALLSIGNS[$callsignRand] . $this->generateCallsignDigits(),
                 ]
             );

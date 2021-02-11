@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Airline;
 use App\Models\Callsign;
 use App\Models\DailyStats;
 use App\Models\Flight;
+use App\Observers\AirlineObserver;
 use App\Observers\CallsignObserver;
 use App\Observers\DailyStatsObserver;
 use App\Observers\FlightObserver;
@@ -36,5 +38,6 @@ class EventServiceProvider extends ServiceProvider
         Callsign::observe(CallsignObserver::class);
         Flight::observe(FlightObserver::class);
         DailyStats::observe(DailyStatsObserver::class);
+        Airline::observe(AirlineObserver::class);
     }
 }
