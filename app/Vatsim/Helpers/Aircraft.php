@@ -2,6 +2,8 @@
 
 namespace App\Vatsim\Helpers;
 
+use Illuminate\Support\Str;
+
 class Aircraft
 {
     public const REGEX_MATCH = '/[^\/]*\/([^\/]*)/';
@@ -37,5 +39,31 @@ class Aircraft
         }
 
         return $type;
+    }
+
+    /**
+     * @param string $altitude
+     *
+     * @return string
+     */
+    public static function normaliseAltitude(string $altitude): string
+    {
+        switch ($altitude) {
+            // FL320
+            case Str::startsWith($altitude, 'FL'):
+                return Str::substr($altitude, 2) . '00';
+
+            // F320
+            case Str::startsWith($altitude, 'F'):
+                return Str::substr($altitude, 1) . '00';
+
+            // 320
+            case (Str::length($altitude) === 3):
+                return $altitude . '00';
+
+            // Fall through and return if its already in a good format i.e 32000
+            default:
+                return $altitude;
+        }
     }
 }

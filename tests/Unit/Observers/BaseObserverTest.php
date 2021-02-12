@@ -2,6 +2,8 @@
 
 namespace Tests\Unit\Observers;
 
+use App\Models\Airline;
+use App\Observers\AirlineObserver;
 use Carbon\Carbon;
 use Tests\TestCase;
 use App\Models\Flight;
@@ -20,6 +22,7 @@ class BaseObserverTest extends TestCase
         Callsign::class => CallsignObserver::class,
         Flight::class => FlightObserver::class,
         DailyStats::class => DailyStatsObserver::class,
+        Airline::class => AirlineObserver::class,
     ];
 
     /** @test */
