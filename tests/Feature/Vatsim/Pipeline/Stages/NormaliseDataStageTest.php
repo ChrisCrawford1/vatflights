@@ -87,4 +87,16 @@ class NormaliseDataStageTest extends FeatureTestCase
                 $this->assertEquals('36000', $return['flight_plan']['altitude']);
             });
     }
+
+    /** @test */
+    public function it_will_change_an_altitude_like_FL050_to_5000()
+    {
+        $flight = $this->testData->getJsonData()['pilots'][0];
+        $flight['flight_plan']['altitude'] = 'FL050';
+
+        (new NormaliseRawData())
+            ->handle($flight, function ($return) {
+                $this->assertEquals('5000', $return['flight_plan']['altitude']);
+            });
+    }
 }

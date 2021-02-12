@@ -49,6 +49,10 @@ class Aircraft
     public static function normaliseAltitude(string $altitude): string
     {
         switch ($altitude) {
+            // FL050
+            case Str::startsWith($altitude, 'FL0'):
+                return Str::substr($altitude, 3) . '00';
+
             // FL320
             case Str::startsWith($altitude, 'FL'):
                 return Str::substr($altitude, 2) . '00';
@@ -59,6 +63,9 @@ class Aircraft
 
             // 320
             case (Str::length($altitude) === 3):
+                if (Str::startsWith($altitude, '0')) {
+                    return Str::substr($altitude, 1) . '00';
+                }
                 return $altitude . '00';
 
             // Fall through and return if its already in a good format i.e 32000
