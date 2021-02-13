@@ -21,4 +21,8 @@ interface IStatsService
      */
     public function getMostPopularAirfield(string $noun, int $isComplete, int $limit = 1): ?object;
 
+    /**
+     * @return object|null
+     */
+    public function getMostPopularAirline(): ?object;
 }
