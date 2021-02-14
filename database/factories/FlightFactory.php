@@ -33,6 +33,7 @@ class FlightFactory extends Factory
             'planned_altitude' => 'FL360',
             'complete' => false,
             'transponder' => $this->faker->randomNumber(4),
+            'arrival_date' => $this->faker->dateTime,
             'logged_in_at' => $this->faker->dateTime,
             'last_seen_at' => $this->faker->dateTime,
         ];

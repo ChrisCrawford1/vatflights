@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CloseFlight;
 use App\Console\Commands\FetchCurrentData;
 use App\Console\Commands\InitialiseDailyStats;
 use App\Console\Commands\ProcessPopularStats;
@@ -33,6 +34,8 @@ class Kernel extends ConsoleKernel
             ->everyFiveMinutes();
         $schedule->command(ProcessPopularStats::class)
             ->everyThirtyMinutes();
+        $schedule->command(CloseFlight::class)
+            ->everyFiveMinutes();
     }
 
     /**

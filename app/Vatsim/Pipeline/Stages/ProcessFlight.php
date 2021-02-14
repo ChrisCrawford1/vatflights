@@ -37,8 +37,7 @@ class ProcessFlight
             $data['flight'] = $storedFlight;
             return $next($data);
         }
-
-
+        
         $activeFlight = $activeCallsign->first();
 
         $activeFlight->update(

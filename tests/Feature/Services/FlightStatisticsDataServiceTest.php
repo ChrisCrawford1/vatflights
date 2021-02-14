@@ -142,7 +142,7 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
             ->create();
 
         $statsService = new FlightStatisticsDataService();
-        $mostPopularDeparture = $statsService->getMostPopularAirfield('departure', false);
+        $mostPopularDeparture = $statsService->getMostPopularFromDataType('departure');
 
         $this->assertEquals('EGLL', $mostPopularDeparture->departure);
         $this->assertEquals(5, $mostPopularDeparture->count);
@@ -157,6 +157,7 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
                 'arrival' => 'TNCM',
                 'aircraft_type' => 'B78X',
                 'complete' => true,
+                'arrival_date' => Carbon::today(),
                 'created_at' => Carbon::now()->subHours(2),
             ]
         )
@@ -168,6 +169,7 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
                 'departure' => 'KLAX',
                 'arrival' => 'KJFK',
                 'complete' => true,
+                'arrival_date' => Carbon::today(),
                 'aircraft_type' => 'B78X',
                 'created_at' => Carbon::now()->subHour(),
             ]
@@ -191,6 +193,7 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
                 'arrival' => 'TNCM',
                 'aircraft_type' => 'B78X',
                 'complete' => true,
+                'arrival_date' => Carbon::today(),
                 'created_at' => Carbon::now()->subHours(2),
             ]
         )
@@ -202,6 +205,7 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
                 'departure' => 'KLAX',
                 'arrival' => 'KJFK',
                 'complete' => true,
+                'arrival_date' => Carbon::today(),
                 'aircraft_type' => 'B78X',
                 'created_at' => Carbon::now()->subHour(),
             ]

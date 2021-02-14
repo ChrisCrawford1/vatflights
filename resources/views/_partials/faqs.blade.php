@@ -54,7 +54,7 @@
                             <b>No, absolutely not.</b> VatFlights as it stands currently, does not store any personally identifiable information about the pilot who has flown the flight.
                         </p>
                         <p class="ml-1 mr-2 pt-2">
-                            We store airlines, callsigns and the flight associated with a callsign along with data about the flight such as its route, altitude, transponder, departure, arrival, aicraft type etc...
+                            We store airlines, callsigns and the flight associated with a callsign along with data about the flight such as its route, altitude, transponder, departure, arrival, aircraft type etc...
                         </p>
                     @endslot
                 @endcomponent
@@ -69,6 +69,17 @@
                         </p>
                         <p class="ml-1 mr-2 pt-2">
                             <b>This is most likely to occur at the start of a new day.</b>
+                        </p>
+                    @endslot
+                @endcomponent
+                @component('components.faq')
+                    @slot('title')
+                        What timezone is the application using?
+                    @endslot
+                    @slot('body')
+                        <p class="ml-1 mr-2 pt-2">
+                            VatFlights operates on UTC/Zulu time the same as the rest of the aviation world.
+                            Vatsim provides the timestamps in its metadata as Zulu. As such a new day will commence at midnight Zulu time.
                         </p>
                     @endslot
                 @endcomponent

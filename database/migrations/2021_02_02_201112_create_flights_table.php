@@ -26,6 +26,7 @@ class CreateFlightsTable extends Migration
             $table->text('route');
             $table->string('planned_altitude');
             $table->unsignedInteger('transponder');
+            $table->timestamp('arrival_date')->nullable();
             $table->timestamp('logged_in_at')->nullable();
             $table->timestamp('last_seen_at')->nullable();
             $table->timestamps();

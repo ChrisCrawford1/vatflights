@@ -25,6 +25,7 @@ class Flight extends Model
      * @var array
      */
     protected $casts = [
+        'created_at' => 'datetime',
         'logged_in_at' => 'datetime',
         'last_seen_at' => 'datetime',
     ];
@@ -35,6 +36,7 @@ class Flight extends Model
     public function markFlightComplete(): bool
     {
         $this->complete = true;
+        $this->arrival_date = Carbon::today();
         return $this->save();
     }
 

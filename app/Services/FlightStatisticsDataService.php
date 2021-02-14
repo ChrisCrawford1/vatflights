@@ -43,13 +43,7 @@ class FlightStatisticsDataService implements IStatsService
         return DB::table('flights')
             ->select(DB::raw("$noun, count(*) as count"))
             ->whereRaw("complete = $isComplete")
-            ->whereBetween(
-                'created_at',
-                [
-                     Carbon::today()->setTime('00', '00', '01'),
-                     Carbon::today()->setTime('23', '59', '59'),
-                ]
-            )
+            ->whereDate('arrival_date', Carbon::today())
             ->groupBy("$noun")
             ->orderByDesc("count")
             ->limit(1)

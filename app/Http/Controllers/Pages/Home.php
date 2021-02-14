@@ -26,7 +26,7 @@ class Home extends Controller
                 Carbon::yesterday()->subDays(6),
                 Carbon::yesterday()->setTime('23', '59', '59')
             ]
-        )->get();
+        )->get()->sortByDesc('created_at');
 
         return view('pages.home')->with(
             [
