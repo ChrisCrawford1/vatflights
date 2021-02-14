@@ -3,12 +3,12 @@
         <nav>
             <ul class="flex items-center justify-between text-sm text-white uppercase no-underline">
                 <li>
-                    <a class="text-quill-400 hover:underline px-3" title="Go to the homepage">
+                    <a class="text-quill-400 hover:underline px-3 {{ url()->current() === route('pages.home') ? 'underline' : '' }}" title="Go to the homepage" href="{{ route('pages.home') }}">
                         Home
                     </a>
                 </li>
                 <li>
-                    <a class="text-quill-400 hover:underline px-3" title="Go to the about page">
+                    <a class="text-quill-400 hover:underline px-3 {{ url()->current() === route('pages.about') ? 'underline' : '' }}" title="Go to the about page" href="{{ route('pages.about') }}">
                         About
                     </a>
                 </li>
