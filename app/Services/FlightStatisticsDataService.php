@@ -12,9 +12,9 @@ class FlightStatisticsDataService implements IStatsService
      * @param string $dataType
      * @param int $limit
      *
-     * @return object
+     * @return object|null
      */
-    public function getMostPopularFromDataType(string $dataType, int $limit = 1): ?object
+    public function getMostPopularFromDataType(string $dataType, int $limit = 1): object|null
     {
         return DB::table('flights')
             ->select(DB::raw("$dataType, count(*) as count"))
@@ -38,7 +38,7 @@ class FlightStatisticsDataService implements IStatsService
      *
      * @return object
      */
-    public function getMostPopularAirfield(string $noun, int $isComplete, int $limit = 1): ?object
+    public function getMostPopularAirfield(string $noun, int $isComplete, int $limit = 1): object|null
     {
         return DB::table('flights')
             ->select(DB::raw("$noun, count(*) as count"))
@@ -53,7 +53,7 @@ class FlightStatisticsDataService implements IStatsService
     /**
      * @return object|null
      */
-    public function getMostPopularAirline(): ?object
+    public function getMostPopularAirline(): object|null
     {
         return DB::table('flights')
             ->join('callsigns', 'callsign_id', '=', 'callsigns.id')
