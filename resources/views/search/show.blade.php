@@ -11,7 +11,7 @@
             <p class="text-stone-500 mt-2 ml-3 mr-3 text-base leading-relaxed mb-4">
                 Currently tracked airline are listed below.
             </p>
-            <div class="grid grid-cols-3 gap-2 mx-auto mb-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mx-auto mb-8">
                 @foreach($airlines as $airline)
                     <div class="flex flex-col bg-havelock-500 rounded-md py-2 px-2">
                         <span>
