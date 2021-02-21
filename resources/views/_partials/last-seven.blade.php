@@ -1,4 +1,4 @@
-<div class="invisible md:visible">
+<div class="invisible md:visible pb-6">
     @if($lastSeven->count() > 0)
             <h1 class="text-3xl text-center mt-12 mb-2 text-stone-500">Last 7 days</h1>
             <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-havelock-500 text-stone-500">
