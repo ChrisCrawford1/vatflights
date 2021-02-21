@@ -22,4 +22,12 @@ class Airline extends Model
     {
         return $this->hasMany(Callsign::class);
     }
+
+    /**
+     * @return string
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
 }

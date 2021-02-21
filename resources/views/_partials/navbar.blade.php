@@ -12,6 +12,11 @@
                         About
                     </a>
                 </li>
+                <li>
+                    <a class="text-quill-400 hover:underline px-3 {{ url()->current() === route('search.show') ? 'underline' : '' }}" title="Go to the search page" href="{{ route('search.show') }}">
+                        Search
+                    </a>
+                </li>
             </ul>
         </nav>
 

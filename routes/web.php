@@ -8,3 +8,13 @@ Route::group(['namespace' => 'Pages'], function () {
     Route::get('/about', 'About')
         ->name('pages.about');
 });
+
+Route::group(['namespace' => 'Search'], function () {
+    Route::get('/search', 'Show')
+        ->name('search.show');
+});
+
+Route::group(['namespace' => 'Airlines', 'prefix' => 'airlines'], function () {
+    Route::get('/{airline:uuid}', 'Show')
+        ->name('airlines.show');
+});
