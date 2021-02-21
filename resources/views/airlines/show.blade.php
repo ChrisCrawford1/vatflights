@@ -55,6 +55,7 @@
                         </tr>
                     @endforeach
                 </table>
+                {{ $callsigns->links() }}
             </div>
         @else
             <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mx-auto w-1/2" role="alert">

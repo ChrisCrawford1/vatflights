@@ -16,7 +16,7 @@ class Show extends Controller
         return view('airlines.show')->with(
             [
                 'airline' => $airline,
-                'callsigns' => $airline->callsigns()->paginate(20),
+                'callsigns' => $airline->callsigns()->orderByDesc('created_at')->paginate(20),
                 'flag' => asset("/pragmarx/countries/flag/file/{$country->iso_a3}.svg")
             ]
         );
