@@ -47,7 +47,7 @@
                     @foreach($callsigns as $callsign)
                         <tr class="bg-gray-100 border-b border-gray-200">
                             <td class="px-4 py-3">
-                                <a href="#" class="text-stone-500 hover:text-blue-200">{{ $callsign->callsign }}</a>
+                                <a href="{{ route('callsign.show', $callsign->uuid) }}" class="text-stone-500 hover:text-blue-200">{{ $callsign->callsign }}</a>
                             </td>
                             <td class="px-4 py-3">
                                 {{ $callsign->created_at->toFormattedDateString() }}

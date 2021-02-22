@@ -15,7 +15,7 @@
                 @foreach($airlines as $airline)
                     <div class="flex flex-col bg-havelock-500 rounded-md py-2 px-2">
                         <span>
-                            <a href="{{ route('airlines.show', $airline->uuid) }}" class="text-stone-500 hover:text-blue-200">
+                            <a href="{{ route('airlines.show', $airline->uuid) }}" class="text-quill-500 hover:text-blue-200">
                                 {{ $airline->name }}
                             </a>
                         </span>

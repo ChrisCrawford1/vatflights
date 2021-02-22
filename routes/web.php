@@ -18,3 +18,8 @@ Route::group(['namespace' => 'Airlines', 'prefix' => 'airlines'], function () {
     Route::get('/{airline:uuid}', 'Show')
         ->name('airlines.show');
 });
+
+Route::group(['namespace' => 'Callsigns', 'prefix' => 'callsign'], function () {
+    Route::get('/{callsign:uuid}', 'Show')
+        ->name('callsign.show');
+});

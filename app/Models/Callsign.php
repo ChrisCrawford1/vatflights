@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Callsign extends Model
 {
@@ -17,11 +17,11 @@ class Callsign extends Model
     protected $guarded = [];
 
     /**
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function airline()
+    public function airline(): BelongsTo
     {
-        return $this->hasOne(Airline::class);
+        return $this->belongsTo(Airline::class);
     }
 
     /**
@@ -30,5 +30,13 @@ class Callsign extends Model
     public function flights(): HasMany
     {
         return $this->hasMany(Flight::class);
+    }
+
+    /**
+     * @return string
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
     }
 }
