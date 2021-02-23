@@ -1,0 +1,15 @@
+.res-table-tag {
+    @apply absolute top-0 left-0 bg-havelock-500 px-2 py-1 text-xs font-bold uppercase;
+}
+
+.res-table-cell {
+    @apply w-full p-3 text-stone-500 text-center relative;
+}
+
+.res-table-header {
+    @apply p-3 font-bold uppercase bg-havelock-500 text-stone-500 hidden;
+}
+
+.res-table-row {
+    @apply bg-white flex flex-row flex-wrap;
+}

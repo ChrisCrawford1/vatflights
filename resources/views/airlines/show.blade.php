@@ -37,26 +37,29 @@
             </div>
         </div>
         @if($callsigns->count() > 0)
-            <div class="">
-                <table class="rounded-t-lg m-5 w-1/2 mx-auto bg-havelock-500 text-stone-500">
-                    <tr class="text-left border-b-2">
-                        <th class="px-4 py-3">Callsign</th>
-                        <th class="px-4 py-3">First Seen</th>
+            <table class="rounded-full border-collapse w-1/2 mx-auto text-stone-500 mt-3 mb-3">
+                <thead>
+                <tr>
+                    <th class="res-table-header lg:table-cell rounded-tl-lg">Callsign</th>
+                    <th class="res-table-header lg:table-cell rounded-tr-lg">First Seen</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($callsigns as $callsign)
+                    <tr class="lg:hover:bg-gray-100 lg:table-row lg:flex-row lg:flex-no-wrap mb-10 lg:mb-0 res-table-row">
+                        <td class="lg:w-auto lg:table-cell lg:static res-table-cell">
+                            <span class="lg:hidden res-table-tag">Callsign</span>
+                            <a href="{{ route('callsign.show', $callsign->uuid) }}" class="text-stone-500 hover:text-blue-200">{{ $callsign->callsign }}</a>
+                        </td>
+                        <td class="lg:w-auto lg:table-cell lg:static res-table-cell">
+                            <span class="lg:hidden res-table-tag bg-gray-400">First Seen</span>
+                            {{ $callsign->created_at->toFormattedDateString() }}
+                        </td>
                     </tr>
-
-                    @foreach($callsigns as $callsign)
-                        <tr class="bg-gray-100 border-b border-gray-200">
-                            <td class="px-4 py-3">
-                                <a href="{{ route('callsign.show', $callsign->uuid) }}" class="text-stone-500 hover:text-blue-200">{{ $callsign->callsign }}</a>
-                            </td>
-                            <td class="px-4 py-3">
-                                {{ $callsign->created_at->toFormattedDateString() }}
-                            </td>
-                        </tr>
-                    @endforeach
-                </table>
-                {{ $callsigns->links() }}
-            </div>
+                @endforeach
+                </tbody>
+            </table>
+            {{ $callsigns->links() }}
         @else
             <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mx-auto w-1/2" role="alert">
                 <p class="font-bold">No Callsigns</p>

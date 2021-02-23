@@ -24,7 +24,7 @@
 
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between flex-col-reverse">
             <div>
-                <p class="text-sm text-gray-700 leading-5">
+                <p class="text-sm text-gray-700 leading-5 mt-1">
                     {!! __('Showing') !!}
                     <span class="font-medium">{{ $paginator->firstItem() }}</span>
                     {!! __('to') !!}
