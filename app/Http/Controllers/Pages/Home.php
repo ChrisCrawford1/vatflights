@@ -24,14 +24,14 @@ class Home extends Controller
             'created_at',
             [
                 Carbon::yesterday()->subDays(6),
-                Carbon::yesterday()->setTime('23', '59', '59')
+                Carbon::yesterday()->setTime('23', '59', '59'),
             ]
         )->get()->sortByDesc('created_at');
 
         return view('pages.home')->with(
             [
                 'stats' => $todaysStats,
-                'lastSeven' => $lastSevenDays
+                'lastSeven' => $lastSevenDays,
             ]
         );
     }

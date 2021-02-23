@@ -34,7 +34,7 @@ class ProcessCallsign
     private function getAirline(string $callsign): Airline
     {
         $callsignIcao = substr($callsign, 0, 3);
-        return Airline::whereIcao($callsignIcao)->firstOr(function() use($callsignIcao) {
+        return Airline::whereIcao($callsignIcao)->firstOr(function () use ($callsignIcao) {
             Log::info("Callsign ICAO $callsignIcao not recognised, using unknown instead.");
             return Airline::whereIcao('???')->first();
         });

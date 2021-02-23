@@ -37,7 +37,7 @@ class ProcessGeneralData implements ShouldQueue
         if ($dailyStats === null) {
             DailyStats::create(
                 [
-                    'max_connected_users' => $this->generalData['connected_clients']
+                    'max_connected_users' => $this->generalData['connected_clients'],
                 ]
             );
             return;

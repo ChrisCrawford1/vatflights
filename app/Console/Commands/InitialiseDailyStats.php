@@ -56,7 +56,7 @@ class InitialiseDailyStats extends Command
             Log::error('Failed to retrieve Vatsim data for Daily Stats, creating an empty record instead.');
             DailyStats::create(
                 [
-                    'max_connected_users' => 0
+                    'max_connected_users' => 0,
                 ]
             );
 

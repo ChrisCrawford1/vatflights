@@ -36,7 +36,7 @@ class FlightStatisticsDataService implements IStatsService
      * @param int $isComplete
      * @param int $limit
      *
-     * @return object
+     * @return object|null
      */
     public function getMostPopularAirfield(string $noun, int $isComplete, int $limit = 1): object|null
     {
