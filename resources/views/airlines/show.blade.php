@@ -37,7 +37,7 @@
             </div>
         </div>
         @if($callsigns->count() > 0)
-            <table class="rounded-full border-collapse w-1/2 mx-auto text-stone-500 mt-3 mb-3">
+            <table class="rounded-full border-collapse w-5/6 sm:w-1/2 mx-auto text-stone-500 mt-3 mb-3">
                 <thead>
                 <tr>
                     <th class="res-table-header lg:table-cell rounded-tl-lg">Callsign</th>
