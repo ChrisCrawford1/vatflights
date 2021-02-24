@@ -21,7 +21,8 @@ before_script:
   - php artisan key:generate
   - php artisan migrate --no-interaction -vvv
 script:
-  - vendor/bin/phpunit --coverage-clover clover.xml
+  - vendor/bin/phpunit --coverage-clover coverage.xml
+#  - vendor/bin/phpunit --coverage-clover clover.xml
 
 after_script:
   - bash <(curl -s https://codecov.io/bash)
