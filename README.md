@@ -1,5 +1,6 @@
-<h3 align="center">VatFlights</h3>
 [![Build Status](https://www.travis-ci.com/ChrisCrawford1/vatflights.svg?branch=develop)](https://www.travis-ci.com/ChrisCrawford1/vatflights)
+
+<h3 align="center">VatFlights</h3>
   <p align="center">
     A place to view data about flights on the Vatsim network
     <br />
