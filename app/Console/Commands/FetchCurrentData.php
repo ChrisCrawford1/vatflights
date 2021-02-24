@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Exceptions\Vatsim\MissingKeysException;
 use App\Jobs\ProcessGeneralData;
 use App\Services\Contracts\IDataService;
 use Carbon\Carbon;
@@ -55,6 +56,14 @@ class FetchCurrentData extends Command
             // If this fails, let it die as it will try again in ~5 minutes.
             Log::error(
                 'Failed to retrieve Vatsim data at ' . Carbon::now()->toString(),
+                [
+                    'exception' => $exception->getMessage()
+                ]
+            );
+            return 0;
+        } catch (MissingKeysException $exception) {
+            Log::error(
+                'Required Keys from the data were missing',
                 [
                     'exception' => $exception->getMessage()
                 ]

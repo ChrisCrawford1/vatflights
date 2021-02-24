@@ -32,8 +32,7 @@ class VatsimDataService implements IDataService
     /**
      * @return Structure
      *
-     * @throws DataUnavailableException
-     * @throws MissingKeysException
+     * @throws DataUnavailableException|MissingKeysException
      */
     public function getLatestVatsimData(): Structure
     {
@@ -41,10 +40,7 @@ class VatsimDataService implements IDataService
             $response = $this->client->get(config('vatsim.json-data-url'));
         } catch (GuzzleException $guzzleException) {
             throw new DataUnavailableException(
-                'There was an issue retrieving data.',
-                [
-                    'exception' => $guzzleException->getMessage(),
-                ]
+                'There was an issue retrieving data.' . $guzzleException->getMessage(),
             );
         }
 
@@ -53,7 +49,9 @@ class VatsimDataService implements IDataService
 
         if (!$dataIsValid) {
             throw new MissingKeysException(
-                'One or more required data key was missing on retrieval',
+                'One or more required data key was missing on retrieval. Keys missing = '
+                .
+                array_diff_key(self::REQUIRED_KEYS, $data),
             );
         }
 
