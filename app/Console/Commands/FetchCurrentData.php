@@ -53,7 +53,12 @@ class FetchCurrentData extends Command
             $vatsimData = $this->vatsimDataService->getLatestVatsimData();
         } catch (DataUnavailableException $exception) {
             // If this fails, let it die as it will try again in ~5 minutes.
-            Log::error('Failed to retrieve Vatsim data at ' . Carbon::now()->toString());
+            Log::error(
+                'Failed to retrieve Vatsim data at ' . Carbon::now()->toString(),
+                [
+                    'exception' => $exception->getMessage()
+                ]
+            );
             return 0;
         }
 

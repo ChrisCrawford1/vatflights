@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Exceptions\Vatsim\MissingKeysException;
 use App\Models\DailyStats;
 use App\Services\Contracts\IDataService;
 use Illuminate\Console\Command;
@@ -53,16 +54,36 @@ class InitialiseDailyStats extends Command
 
             ProcessGeneralData::dispatch($vatsimData->getGeneralData());
         } catch (DataUnavailableException $exception) {
-            Log::error('Failed to retrieve Vatsim data for Daily Stats, creating an empty record instead.');
-            DailyStats::create(
+            Log::error(
+                'Failed to retrieve Vatsim data for Daily Stats, creating an empty record instead.',
                 [
-                    'max_connected_users' => 0,
+                    'exception' => $exception->getMessage(),
                 ]
             );
-
+            $this->generateEmptyPlaceholderStats();
             return 0;
+        } catch (MissingKeysException $exception) {
+            Log::error(
+                'Required keys are missing',
+                [
+                    'exception' => $exception->getMessage(),
+                ]
+            );
+            $this->generateEmptyPlaceholderStats();
         }
 
         return 1;
+    }
+
+    /**
+     * @return void
+     */
+    private function generateEmptyPlaceholderStats(): void
+    {
+        DailyStats::create(
+            [
+                'max_connected_users' => 0,
+            ]
+        );
     }
 }
