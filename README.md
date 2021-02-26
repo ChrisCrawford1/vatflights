@@ -1,6 +1,6 @@
+[![Build Status](https://www.travis-ci.com/ChrisCrawford1/vatflights.svg?branch=develop)](https://www.travis-ci.com/ChrisCrawford1/vatflights)
+[![codecov](https://codecov.io/gh/ChrisCrawford1/vatflights/branch/master/graph/badge.svg?token=IC72P1FMQU)](https://codecov.io/gh/ChrisCrawford1/vatflights)
 <h3 align="center">VatFlights</h3>
-[![Build Status](https://travis-ci.com/ChrisCrawford1/vatflights.svg?token=7AvD96hQKSNnWW2McUvA&branch=master)](https://travis-ci.com/ChrisCrawford1/vatflights)
-
   <p align="center">
     A place to view data about flights on the Vatsim network
     <br />

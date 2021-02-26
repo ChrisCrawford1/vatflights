@@ -17,7 +17,8 @@
         "league/csv": "^9.6",
         "pragmarx/countries-laravel": "^0.7.0",
         "predis/predis": "^1.1",
-        "sempro/phpunit-pretty-print": "^1.4"
+        "sempro/phpunit-pretty-print": "^1.4",
+        "sentry/sentry-laravel": "^2.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
