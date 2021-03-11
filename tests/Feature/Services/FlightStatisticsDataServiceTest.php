@@ -37,7 +37,7 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
             ->create();
 
         $statsService = new FlightStatisticsDataService();
-        $mostPopularAircraft = $statsService->getMostPopularFromDataType('aircraft_type');
+        $mostPopularAircraft = $statsService->getMostPopularFromDataType('aircraft_type')->first();
 
         $this->assertEquals('A320', $mostPopularAircraft->aircraft_type);
         $this->assertEquals(10, $mostPopularAircraft->count);
@@ -49,6 +49,7 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
         $this->assertNull(
             (new FlightStatisticsDataService())
                 ->getMostPopularFromDataType('aircraft_type')
+                ->first()
         );
     }
 
@@ -76,6 +77,7 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
         $this->assertNull(
             (new FlightStatisticsDataService())
                 ->getMostPopularFromDataType('aircraft_type')
+                ->first()
         );
     }
 
@@ -110,7 +112,9 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
             ->create();
 
         $statsService = new FlightStatisticsDataService();
-        $mostPopularAircraft = $statsService->getMostPopularFromDataType('aircraft_type');
+        $mostPopularAircraft = $statsService
+            ->getMostPopularFromDataType('aircraft_type')
+            ->first();
 
         $this->assertEquals('A320', $mostPopularAircraft->aircraft_type);
         $this->assertEquals(9, $mostPopularAircraft->count);
@@ -142,7 +146,9 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
             ->create();
 
         $statsService = new FlightStatisticsDataService();
-        $mostPopularDeparture = $statsService->getMostPopularFromDataType('departure');
+        $mostPopularDeparture = $statsService
+            ->getMostPopularFromDataType('departure')
+            ->first();
 
         $this->assertEquals('EGLL', $mostPopularDeparture->departure);
         $this->assertEquals(5, $mostPopularDeparture->count);
@@ -178,7 +184,9 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
             ->create();
 
         $statsService = new FlightStatisticsDataService();
-        $mostPopularArrival = $statsService->getMostPopularAirfield('arrival', true);
+        $mostPopularArrival = $statsService
+            ->getMostPopularAirfield('arrival', true)
+            ->first();
 
         $this->assertEquals('KJFK', $mostPopularArrival->arrival);
         $this->assertEquals(4, $mostPopularArrival->count);
@@ -225,7 +233,9 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
             ->create();
 
         $statsService = new FlightStatisticsDataService();
-        $mostPopularArrival = $statsService->getMostPopularAirfield('arrival', true);
+        $mostPopularArrival = $statsService
+            ->getMostPopularAirfield('arrival', true)
+            ->first();
 
         $this->assertEquals('KJFK', $mostPopularArrival->arrival);
         $this->assertEquals(4, $mostPopularArrival->count);

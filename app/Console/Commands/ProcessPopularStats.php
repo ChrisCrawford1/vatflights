@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\DailyStats;
 use App\Services\Contracts\IStatsService;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class ProcessPopularStats extends Command
@@ -45,17 +46,23 @@ class ProcessPopularStats extends Command
      */
     public function handle()
     {
-        $mostPopularAircraft = $this->statsService->getMostPopularFromDataType('aircraft_type');
-        $mostPopularAltitude = $this->statsService->getMostPopularFromDataType('planned_altitude');
-        $mostPopularDeparture = $this->statsService->getMostPopularFromDataType('departure');
-        $mostPopularArrival = $this->statsService->getMostPopularAirfield('arrival', (int) true);
-        $mostPopularAirline = $this->statsService->getMostPopularAirline();
+        $dates = [
+            Carbon::today()->setTime('00', '00', '01'),
+            Carbon::today()->setTime('23', '59', '59'),
+        ];
+
+
+        $mostPopularAircraft = $this->statsService->getMostPopularFromDataType('aircraft_type')->first();
+        $mostPopularAltitude = $this->statsService->getMostPopularFromDataType('planned_altitude')->first();
+        $mostPopularDeparture = $this->statsService->getMostPopularFromDataType('departure')->first();
+        $mostPopularArrival = $this->statsService->getMostPopularAirfield('arrival', (int) true)->first();
+        $mostPopularAirline = $this->statsService->getMostPopularAirline()->first();
 
         DailyStats::today()
             ->update(
                 [
-                    'most_popular_aircraft' => $mostPopularAircraft->aircraft_type,
-                    'aircraft_uses' => $mostPopularAircraft->count,
+                    'most_popular_aircraft' => $mostPopularAircraft->aircraft_type ?? null,
+                    'aircraft_uses' => $mostPopularAircraft->count ?? 0,
                     'most_common_altitude' => $mostPopularAltitude->planned_altitude,
                     'most_popular_departure' => $mostPopularDeparture->departure,
                     'departure_count' => $mostPopularDeparture->count,
