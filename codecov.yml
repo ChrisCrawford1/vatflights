@@ -1,6 +1,10 @@
 codecov:
   require_ci_to_pass: yes
 
+  coverage:
+    status:
+      patch: off
+
 ignore:
   - "app/Http/Controllers/Auth"
   - "app/Http/Controllers/HomeController.php"
