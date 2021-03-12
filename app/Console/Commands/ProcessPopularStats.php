@@ -46,12 +46,6 @@ class ProcessPopularStats extends Command
      */
     public function handle()
     {
-        $dates = [
-            Carbon::today()->setTime('00', '00', '01'),
-            Carbon::today()->setTime('23', '59', '59'),
-        ];
-
-
         $mostPopularAircraft = $this->statsService->getMostPopularFromDataType('aircraft_type')->first();
         $mostPopularAltitude = $this->statsService->getMostPopularFromDataType('planned_altitude')->first();
         $mostPopularDeparture = $this->statsService->getMostPopularFromDataType('departure')->first();
