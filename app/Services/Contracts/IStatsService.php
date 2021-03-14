@@ -2,27 +2,34 @@
 
 namespace App\Services\Contracts;
 
+use Illuminate\Support\Collection;
+
 interface IStatsService
 {
     /**
      * @param string $dataType
      * @param int $limit
+     * @param array $dates
      *
-     * @return object|null
+     * @return Collection
      */
-    public function getMostPopularFromDataType(string $dataType, int $limit = 1): object|null;
+    public function getMostPopularFromDataType(string $dataType, int $limit = 1, array $dates = []): Collection;
 
     /**
      * @param string $noun
      * @param int $isComplete
      * @param int $limit
+     * @param string $date
      *
-     * @return object|null
+     * @return Collection
      */
-    public function getMostPopularAirfield(string $noun, int $isComplete, int $limit = 1): object|null;
+    public function getMostPopularAirfield(string $noun, int $isComplete, int $limit = 1, string $date = ''): Collection;
 
     /**
-     * @return object|null
+     * @param int $limit
+     * @param array $dates
+     *
+     * @return Collection
      */
-    public function getMostPopularAirline(): ?object;
+    public function getMostPopularAirline(int $limit = 1, array $dates = []): Collection;
 }

@@ -23,3 +23,8 @@ Route::group(['namespace' => 'Callsigns', 'prefix' => 'callsign'], function () {
     Route::get('/{callsign:uuid}', 'Show')
         ->name('callsign.show');
 });
+
+Route::group(['namespace' => 'Stats', 'prefix' => 'stats'], function () {
+    Route::get('/', 'Show')
+        ->name('stats.show');
+});
