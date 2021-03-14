@@ -240,4 +240,67 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
         $this->assertEquals('KJFK', $mostPopularArrival->arrival);
         $this->assertEquals(4, $mostPopularArrival->count);
     }
+
+    /** @test */
+    public function it_can_retrieve_data_from_a_custom_range()
+    {
+        Flight::factory(
+            [
+                'departure' => 'EGLL',
+                'arrival' => 'TNCM',
+                'aircraft_type' => 'A320',
+                'complete' => true,
+                'arrival_date' => Carbon::today(),
+                'created_at' => Carbon::yesterday()->setTime('23', '59', '58'),
+            ]
+        )->create();
+
+        Flight::factory(
+            [
+                'departure' => 'EGLL',
+                'arrival' => 'KJFK',
+                'aircraft_type' => 'B78X',
+                'complete' => true,
+                'arrival_date' => Carbon::today(),
+                'created_at' => Carbon::yesterday()->setTime('00', '00', '00'),
+            ]
+        )->create();
+
+        Flight::factory(
+            [
+                'departure' => 'KLAX',
+                'arrival' => 'KJFK',
+                'complete' => true,
+                'arrival_date' => Carbon::today(),
+                'aircraft_type' => 'B78X',
+                'created_at' => Carbon::yesterday()->setTime('14', '43', '32'),
+            ]
+        )->create();
+
+        Flight::factory(
+            [
+                'departure' => 'KLAX',
+                'arrival' => 'KJFK',
+                'complete' => false,
+                'aircraft_type' => 'B78X',
+                'created_at' => Carbon::yesterday()->setTime('03', '32', '12'),
+            ]
+        )->create();
+
+        $statsService = new FlightStatisticsDataService();
+        $mostPopularAircraft = $statsService
+            ->getMostPopularFromDataType(
+                'aircraft_type',
+                2,
+                [
+                    Carbon::yesterday()->setTime('00', '00', '01'),
+                    Carbon::yesterday()->setTime('23', '59', '59'),
+                ]
+            )->toArray();
+
+        $this->assertEquals($mostPopularAircraft[0]->aircraft_type, 'B78X');
+        $this->assertEquals($mostPopularAircraft[0]->count, '2');
+        $this->assertEquals($mostPopularAircraft[1]->aircraft_type, 'A320');
+        $this->assertEquals($mostPopularAircraft[1]->count, '1');
+    }
 }
