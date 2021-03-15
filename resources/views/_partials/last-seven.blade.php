@@ -17,7 +17,9 @@
                 <tr class="lg:hover:bg-gray-100 lg:table-row lg:flex-row lg:flex-no-wrap mb-10 lg:mb-0 res-table-row">
                     <td class="lg:w-auto lg:table-cell lg:static res-table-cell">
                         <span class="lg:hidden res-table-tag">Date</span>
-                        {{ $day->date->toFormattedDateString() }}
+                        <a href="{{ route('stats.show',"date=$day->date") }}" class="hover:text-blue-200 cursor-pointer">
+                            {{ $day->date->toDateString() }}
+                        </a>
                     </td>
                     <td class="lg:w-auto lg:table-cell lg:static res-table-cell">
                         <span class="lg:hidden res-table-tag bg-gray-400">Airline</span>

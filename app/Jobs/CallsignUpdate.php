@@ -21,6 +21,11 @@ class CallsignUpdate implements ShouldQueue
     private Collection $pilots;
 
     /**
+     * @var int
+     */
+    public $tries = 5;
+
+    /**
      * Create a new job instance.
      *
      * @param Collection $pilots

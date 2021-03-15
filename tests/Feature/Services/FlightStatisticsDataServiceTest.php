@@ -37,7 +37,7 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
             ->create();
 
         $statsService = new FlightStatisticsDataService();
-        $mostPopularAircraft = $statsService->getMostPopularFromDataType('aircraft_type');
+        $mostPopularAircraft = $statsService->getMostPopularFromDataType('aircraft_type')->first();
 
         $this->assertEquals('A320', $mostPopularAircraft->aircraft_type);
         $this->assertEquals(10, $mostPopularAircraft->count);
@@ -49,6 +49,7 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
         $this->assertNull(
             (new FlightStatisticsDataService())
                 ->getMostPopularFromDataType('aircraft_type')
+                ->first()
         );
     }
 
@@ -76,6 +77,7 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
         $this->assertNull(
             (new FlightStatisticsDataService())
                 ->getMostPopularFromDataType('aircraft_type')
+                ->first()
         );
     }
 
@@ -110,7 +112,9 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
             ->create();
 
         $statsService = new FlightStatisticsDataService();
-        $mostPopularAircraft = $statsService->getMostPopularFromDataType('aircraft_type');
+        $mostPopularAircraft = $statsService
+            ->getMostPopularFromDataType('aircraft_type')
+            ->first();
 
         $this->assertEquals('A320', $mostPopularAircraft->aircraft_type);
         $this->assertEquals(9, $mostPopularAircraft->count);
@@ -142,7 +146,9 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
             ->create();
 
         $statsService = new FlightStatisticsDataService();
-        $mostPopularDeparture = $statsService->getMostPopularFromDataType('departure');
+        $mostPopularDeparture = $statsService
+            ->getMostPopularFromDataType('departure')
+            ->first();
 
         $this->assertEquals('EGLL', $mostPopularDeparture->departure);
         $this->assertEquals(5, $mostPopularDeparture->count);
@@ -178,7 +184,9 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
             ->create();
 
         $statsService = new FlightStatisticsDataService();
-        $mostPopularArrival = $statsService->getMostPopularAirfield('arrival', true);
+        $mostPopularArrival = $statsService
+            ->getMostPopularAirfield('arrival', true)
+            ->first();
 
         $this->assertEquals('KJFK', $mostPopularArrival->arrival);
         $this->assertEquals(4, $mostPopularArrival->count);
@@ -225,9 +233,74 @@ class FlightStatisticsDataServiceTest extends FeatureTestCase
             ->create();
 
         $statsService = new FlightStatisticsDataService();
-        $mostPopularArrival = $statsService->getMostPopularAirfield('arrival', true);
+        $mostPopularArrival = $statsService
+            ->getMostPopularAirfield('arrival', true)
+            ->first();
 
         $this->assertEquals('KJFK', $mostPopularArrival->arrival);
         $this->assertEquals(4, $mostPopularArrival->count);
+    }
+
+    /** @test */
+    public function it_can_retrieve_data_from_a_custom_range()
+    {
+        Flight::factory(
+            [
+                'departure' => 'EGLL',
+                'arrival' => 'TNCM',
+                'aircraft_type' => 'A320',
+                'complete' => true,
+                'arrival_date' => Carbon::today(),
+                'created_at' => Carbon::yesterday()->setTime('23', '59', '58'),
+            ]
+        )->create();
+
+        Flight::factory(
+            [
+                'departure' => 'EGLL',
+                'arrival' => 'KJFK',
+                'aircraft_type' => 'B78X',
+                'complete' => true,
+                'arrival_date' => Carbon::today(),
+                'created_at' => Carbon::yesterday()->setTime('00', '00', '00'),
+            ]
+        )->create();
+
+        Flight::factory(
+            [
+                'departure' => 'KLAX',
+                'arrival' => 'KJFK',
+                'complete' => true,
+                'arrival_date' => Carbon::today(),
+                'aircraft_type' => 'B78X',
+                'created_at' => Carbon::yesterday()->setTime('14', '43', '32'),
+            ]
+        )->create();
+
+        Flight::factory(
+            [
+                'departure' => 'KLAX',
+                'arrival' => 'KJFK',
+                'complete' => false,
+                'aircraft_type' => 'B78X',
+                'created_at' => Carbon::yesterday()->setTime('03', '32', '12'),
+            ]
+        )->create();
+
+        $statsService = new FlightStatisticsDataService();
+        $mostPopularAircraft = $statsService
+            ->getMostPopularFromDataType(
+                'aircraft_type',
+                2,
+                [
+                    Carbon::yesterday()->setTime('00', '00', '01'),
+                    Carbon::yesterday()->setTime('23', '59', '59'),
+                ]
+            )->toArray();
+
+        $this->assertEquals($mostPopularAircraft[0]->aircraft_type, 'B78X');
+        $this->assertEquals($mostPopularAircraft[0]->count, '2');
+        $this->assertEquals($mostPopularAircraft[1]->aircraft_type, 'A320');
+        $this->assertEquals($mostPopularAircraft[1]->count, '1');
     }
 }

@@ -18,6 +18,11 @@ class FlightCloser implements ShouldQueue
     private Collection $flights;
 
     /**
+     * @var int
+     */
+    public $tries = 5;
+
+    /**
      * Create a new job instance.
      *
      * @param Collection $flights
