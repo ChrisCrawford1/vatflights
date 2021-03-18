@@ -57,9 +57,9 @@ class ProcessPopularStats extends Command
                 [
                     'most_popular_aircraft' => $mostPopularAircraft->aircraft_type ?? null,
                     'aircraft_uses' => $mostPopularAircraft->count ?? 0,
-                    'most_common_altitude' => $mostPopularAltitude->planned_altitude,
-                    'most_popular_departure' => $mostPopularDeparture->departure,
-                    'departure_count' => $mostPopularDeparture->count,
+                    'most_common_altitude' => $mostPopularAltitude->planned_altitude ?? 0,
+                    'most_popular_departure' => $mostPopularDeparture->departure ?? 0,
+                    'departure_count' => $mostPopularDeparture->count ?? 0,
                     'most_popular_arrival' => $mostPopularArrival->arrival ?? null,
                     'arrival_count' => $mostPopularArrival->count ?? null,
                     'most_popular_airline' => $mostPopularAirline->name ?? null,
